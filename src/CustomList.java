@@ -87,11 +87,12 @@ public class CustomList <T> extends AbstractList<T> {
             for(int i=0; i<index;i++){
                 ourElement = ourElement.next;
             }
+            return ourElement.value;
         }
         else{
             throw new NoSuchElementException();
         }
-        return null;
+
     }
 
     @Override
