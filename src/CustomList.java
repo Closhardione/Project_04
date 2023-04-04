@@ -1,5 +1,6 @@
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class CustomList <T> extends AbstractList<T> {
@@ -111,5 +112,22 @@ public class CustomList <T> extends AbstractList<T> {
     public boolean add(T t){
         addLast((t));
         return true;
+    }
+    public Iterator<T> iterator(){
+        return new Iterator<T>() {
+            Node currentNode = first;
+
+            @Override
+            public boolean hasNext() {
+                return currentNode!=null;
+            }
+
+            @Override
+            public T next() {
+                T value = currentNode.value;
+                currentNode=currentNode.next;
+                return value;
+            }
+        };
     }
 }
