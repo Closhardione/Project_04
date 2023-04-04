@@ -2,7 +2,9 @@ import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class CustomList <T>  {
+public class CustomList <T> extends AbstractList<T> {
+
+
     private class Node{
         T value;
         Node next;
@@ -78,5 +80,35 @@ public class CustomList <T>  {
         }
         return oldLastElement;
     }
+    @Override
+    public T get(int index) {
+        if( first != null && index < size()){
+            Node ourElement=first;
+            for(int i=0; i<index;i++){
+                ourElement = ourElement.next;
+            }
+        }
+        else{
+            throw new NoSuchElementException();
+        }
+        return null;
+    }
 
+    @Override
+    public int size() {
+        if(first!=null) {
+            Node ourElement = first;
+            int counter = 0;
+            while (ourElement.next != last) {
+                ourElement = ourElement.next;
+                counter++;
+            }
+            return counter;
+        }
+        return 0;
+    }
+    public boolean add(T t){
+        addLast((t));
+        return true;
+    }
 }
