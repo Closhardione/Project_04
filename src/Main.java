@@ -7,10 +7,10 @@ public class Main {
         test1.addFirst("1");
         test1.addLast("2");
         System.out.println(test1.getFirst() + " " + test1.getLast());
-        List<String> test2 = new CustomList<String>();
-        test2.add("Test1");
-        test2.add("test2");
-        for(String element : test2){
+        List <Integer> test2 = new CustomList<>();
+        test2.add(3);
+        test2.add(4);
+        for(Integer element : test2){
             System.out.println(element);
         }
         String test3 = "";
@@ -32,7 +32,8 @@ public class Main {
         list.add(new X());
         list.add(new Y());
         findSameType(list, X.class).forEach(System.out::println);
-
+        RangePredicate<Integer> predicate = new RangePredicate<>(2,8);
+        test2.stream().filter(predicate).toList();
     }
 
     // List<?> findSameType(dasds, List.class)
